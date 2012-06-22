@@ -23,6 +23,16 @@ end
 
 
 #server.js
+
+$(function() {
+  var faye = new Faye.Client('http://dubitoserver.herokuapp.com/faye');
+  faye.subscribe("/messages/new", function(data) {
+    eval(data);
+  });
+});
+
+
+
 $(function() {
 	var faye = new Faye.Client('http://dubitoserver.herokuapp.com/faye');
   faye.subscribe('/messages/new', function (data) {
@@ -34,3 +44,5 @@ $(function() {
     $('#new_message')[0].reset();
   });
 });
+
+
