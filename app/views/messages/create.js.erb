@@ -1,6 +1,4 @@
-<% broadcast "/messages/new" do %>
-  $("#chat").append("<%= j render(@message) %>");
-<% end %>
+
 
 <% broadcast "/notification/iPhone" do %>
 	alert("<%= j @message.content %>");

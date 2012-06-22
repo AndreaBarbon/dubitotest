@@ -5,5 +5,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create!(params[:message])
+    broadcast "/messages/new" do
+      $("#chat").append("<%= j render(@message) %>");
+    end
   end
 end
