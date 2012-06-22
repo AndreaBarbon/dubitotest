@@ -1,5 +1,5 @@
 $(function() {
-	var faye = new Faye.Client('http://localhost:9292/faye');
+	var faye = new Faye.Client('http://dubitoserver.herokuapp.com/faye');
   faye.subscribe('/messages/new', function (data) {
     console.log(data);
     $("#chat").append('<li>' + data.message.content + '</li>')
