@@ -173,6 +173,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   faye
+  hashie
   jquery-rails
   json
   nifty-generators

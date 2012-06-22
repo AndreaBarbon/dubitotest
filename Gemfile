@@ -19,6 +19,8 @@ gem 'private_pub'
 gem 'nifty-generators'
 #gem 'faye-rails'
 
+gem 'hashie'
+
 gem 'twitter-bootstrap-rails'
 
 # Gems used only for assets and not required
