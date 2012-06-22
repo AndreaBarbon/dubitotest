@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Esperimento2</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'http://dubitoserver.herokuapp.com/faye.js' %>
+  <%= csrf_meta_tags %>
+	<%= yield :head %>
+</head>
+<body>
+
+	<% if current_user %>
+	  Welcome <%= current_user.name %>!
+	  <%= link_to "Sign Out", signout_path %>
+	<% else %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+	<br/>
+  <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+	<% end %>
+
+<%= yield %>
+
+</body>
+</html>

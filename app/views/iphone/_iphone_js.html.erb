@@ -1,0 +1,8 @@
+<script type="text/javascript">
+	$(function() {
+	  var faye = new Faye.Client('http://dubitoserver.herokuapp.com/faye');
+	  faye.subscribe("/notification/iPhone", function(data) {
+	    eval(data);
+	  });
+	});
+</script>

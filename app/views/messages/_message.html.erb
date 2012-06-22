@@ -1,0 +1,7 @@
+<li>
+  <span class="created_at"><%= message.created_at.strftime("%H:%M") %></span>
+  <% if current_user %>
+		<%= current_user.name %> says: 
+	<% end %>
+	<%= message.content %>
+</li>

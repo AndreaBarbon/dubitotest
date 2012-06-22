@@ -1,0 +1,15 @@
+<%- model_class = Message.new.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+
+<div class="well limited">
+	<ul id="chat" class="limited">
+		<% render @messages %>
+	</ul>
+</div>
+
+<%= form_for Message.new, :remote=>true do |f| %>
+	<%= f.text_field :content %>
+	<%= f.submit "send", :class => 'btn btn-primary' %>
+<% end %>

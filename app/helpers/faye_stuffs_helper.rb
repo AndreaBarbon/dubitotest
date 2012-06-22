@@ -1,0 +1,2 @@
+module FayeStuffsHelper
+end
