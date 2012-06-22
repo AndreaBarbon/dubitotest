@@ -24,6 +24,11 @@ message = {:channel => channel, :data => { :object => object, :type => "message"
 
 
 
+#create.js
+<% broadcast "/messages/new" do %>
+  $("#chat").append("<%= j render(@message) %>");
+<% end %>
+
 
 
 #server.js
