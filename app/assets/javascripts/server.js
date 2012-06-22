@@ -2,8 +2,7 @@ $(function() {
 	var faye = new Faye.Client('http://dubitoserver.herokuapp.com/faye');
   faye.subscribe('/messages/new', function (data) {
     console.log(data);
-		eval(data);
-    $("#chat").append('<li>' + data + '</li>')
+    $("#chat").append('<li>' + data.content + '</li>')
   });
 
   $("#new_message").live("ajax:complete", function(event,xhr,status){
