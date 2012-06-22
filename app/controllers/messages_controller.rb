@@ -5,8 +5,15 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create!(params[:message])
-    broadcast "/messages/new" do
-      $("#chat").append("<%= j render(@message) %>");
-    end
+    broadcast("/messages/new", @message)
+    render :json => @message
+  end
+
+  private
+
+  def broadcast(channel, object)
+    message = {:channel => channel, :data => object, :ext => {:auth_token => FAYE_TOKEN} }
+    uri = URI.parse("http://dubitoserver.herokuapp.com/faye")
+    Net::HTTP.post_form(uri, :message => message.to_json)
   end
 end
