@@ -1,3 +1,8 @@
+'http://dubitoserver.herokuapp.com/faye'
+
+
+
+
 #Security missing!
 class ServerAuth
   def incoming(message, callback)
