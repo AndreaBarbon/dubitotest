@@ -40,6 +40,18 @@ $(function() {
     $("#chat").append('<li>' + data.object.body + '</li>')
   });
 
+
+
+
+
+#app_helper
+
+def broadcast(channel, &block)
+  message = {:channel => channel, :data => capture(&block), :ext => {:auth_token => FAYE_TOKEN}}
+  uri = URI.parse("http://dubitoserver.herokuapp.com/faye")
+  Net::HTTP.post_form(uri, :message => message.to_json)
+end
+
   $("#new_message").live("ajax:complete", function(event,xhr,status){
     $('#new_message')[0].reset();
   });

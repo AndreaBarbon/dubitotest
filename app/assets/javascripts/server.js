@@ -3,7 +3,7 @@ $(function() {
   faye.subscribe('/messages/new', function (data) {
     console.log(data);
 		eval(data);
-    $("#chat").append('<li>' + data + '</li>')
+    $("#chat").append('<li>' + data.object.body + '</li>')
   });
 
   $("#new_message").live("ajax:complete", function(event,xhr,status){
