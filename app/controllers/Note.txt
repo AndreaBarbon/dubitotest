@@ -20,6 +20,10 @@ class MessagesController < ApplicationController
 end
 
 
+message = {:channel => channel, :data => { :object => object, :type => "message" } }
+
+
+
 
 
 #server.js
