@@ -9,18 +9,10 @@ gem 'rails', '3.2.5'
 gem 'pg'
 gem 'json'
 
-gem 'thin'
 gem 'pusher'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-
-gem 'faye'
-gem 'private_pub'
-gem 'nifty-generators'
-#gem 'faye-rails'
-
-gem 'hashie'
 
 gem 'twitter-bootstrap-rails'
 
