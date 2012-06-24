@@ -25,12 +25,13 @@
     });
 
 		channel.bind('new_message', function(data) {
-		  msg = '<br/>' + data.from + ': ' + data.subject;
+		 console.log('Private message received');
+		 msg = '<br/>' + data.from + ': ' + data.subject;
 		  dom_notify(msg);
 		});	
 		
 		channel_public.bind('new_message', function(data) {
-			console.log('Message received');
+			console.log('Public message received');
 		  msg = '<br/>' + data.from + '(public): ' + data.subject;
 		  dom_notify(msg);
 		});

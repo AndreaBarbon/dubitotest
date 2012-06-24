@@ -1,8 +1,15 @@
 Esperimento2::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  FAYE_URL = 'http://localhost:9292/faye'
+  #pusher
+  require 'pusher'
 
+  Pusher.app_id = 22736
+  Pusher.key = 'e50277c2ad2071c2e622'
+  Pusher.secret = '83c272e0c122b526764f'
+  
+  
+  
   # Code is not reloaded between requests
   config.cache_classes = true
 
