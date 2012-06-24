@@ -13,6 +13,7 @@
     });
 		pusher.connection.bind('state_change', function(states) {
 		  // states = {previous: 'oldState', current: 'newState'}
+			console.log('State changed to '+states.current);		
 		  $('div#status').text("Pusher's current state is " + states.current);
 		  dom_notify(states.current);
 		});
@@ -26,9 +27,10 @@
 		channel.bind('new_message', function(data) {
 		  msg = '<br/>' + data.from + ': ' + data.subject;
 		  dom_notify(msg);
-		});
+		});	
 		
 		channel_public.bind('new_message', function(data) {
+			console.log('Message received');
 		  msg = '<br/>' + data.from + '(public): ' + data.subject;
 		  dom_notify(msg);
 		});
