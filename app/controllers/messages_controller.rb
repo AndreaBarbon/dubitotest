@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     
     #Pusher['private-'+current_user.id.to_s].trigger('new_message', {:from => current_user.name, :subject => @message.content})
     Pusher['public'].trigger('new_message', {:from => current_user.name, :subject => @message.content})
-    logger.debug '****************** Sending message: ' + @message.content
+    puts '****************** Sending message: ' + @message.content
     
     #broadcast("/messages/new", @message)
     #render :json => @message
