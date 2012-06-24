@@ -10,7 +10,10 @@ Esperimento2::Application.routes.draw do
   match 'iphone/messages/new/:content' => 'iphone#new_message', :as => :new_message
   
   match "/auth/:provider/callback" => "sessions#create"
-  match "/signout" => "sessions#destroy", :as => :signout  
+  match "/signout" => "sessions#destroy", :as => :signout
+  
+  post 'pusher/auth'  
+  get 'pusher/auth'  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

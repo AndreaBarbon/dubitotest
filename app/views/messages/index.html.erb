@@ -1,15 +1,25 @@
-<%- model_class = Message.new.class -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-</div>
+<% if current_user %>
 
-<div class="well limited">
-	<ul id="chat" class="limited">
-		<% render @messages %>
-	</ul>
-</div>
+	<%- model_class = Message.new.class -%>
+	<div class="page-header">
+	  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+	</div>
 
-<%= form_for Message.new, :remote=>true do |f| %>
-	<%= f.text_field :content %>
-	<%= f.submit "send", :class => 'btn btn-primary' %>
+	<div class="well limited">
+		<ul id="notify" class="limited">
+			<% render @messages %>
+		</ul>
+	</div>
+
+	<%= form_for Message.new, :remote=>true do |f| %>
+		<%= f.text_field :content %>
+		<%= f.submit "send", :class => 'btn btn-primary' %>
+	<% end %>
+	
+	<%= render 'pusher_subscription' %>
+	
+<% else %>
+	<h1>Please log in</h1>
 <% end %>
+
+

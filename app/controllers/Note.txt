@@ -1,4 +1,4 @@
-'http://dubitoserver.herokuapp.com/faye'
+'http://localhost:9292/faye'
 
 
 
@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
 
   def broadcast(channel, object)
     message = {:channel => channel, :data => { :object => object, :type => "message" } }
-    uri = URI.parse("http://dubitoserver.herokuapp.com/faye")
+    uri = URI.parse("http://localhost:9292/faye")
     Net::HTTP.post_form(uri, :message => message.to_json)
   end
 end
@@ -56,7 +56,7 @@ message = {:channel => channel, :data => { :object => object, :type => "message"
 #server.js
 
 $(function() {
-  var faye = new Faye.Client('http://dubitoserver.herokuapp.com/faye');
+  var faye = new Faye.Client('http://localhost:9292/faye');
   faye.subscribe("/messages/new", function(data) {
     eval(data);
   });
@@ -65,7 +65,7 @@ $(function() {
 
 
 $(function() {
-	var faye = new Faye.Client('http://dubitoserver.herokuapp.com/faye');
+	var faye = new Faye.Client('http://localhost:9292/faye');
   faye.subscribe('/messages/new', function (data) {
     console.log(data);
     $("#chat").append('<li>' + data.object.body + '</li>')
@@ -79,7 +79,7 @@ $(function() {
 
 def broadcast(channel, &block)
   message = {:channel => channel, :data => capture(&block), :ext => {:auth_token => FAYE_TOKEN}}
-  uri = URI.parse("http://dubitoserver.herokuapp.com/faye")
+  uri = URI.parse("http://localhost:9292/faye")
   Net::HTTP.post_form(uri, :message => message.to_json)
 end
 

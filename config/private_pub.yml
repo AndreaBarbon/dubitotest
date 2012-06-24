@@ -1,10 +1,10 @@
 development:
-  server: "http://dubitoserver.herokuapp.com/faye"
+  server: "http://localhost:9292/faye"
   secret_token: "secret"
 test:
-  server: "http://dubitoserver.herokuapp.com/faye"
+  server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "http://dubitoserver.herokuapp.com/faye"
+  server: "http://localhost:9292/faye"
   secret_token: "36280413fb625a2760399ab9bae5224c4447382e62a1ae723512944f68779b16"
   signature_expiration: 3600 # one hour

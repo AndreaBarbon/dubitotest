@@ -1,0 +1,34 @@
+$(function() {
+  var pusher = new Pusher('e50277c2ad2071c2e622'); // Replace with your app key
+  var channel = pusher.subscribe('private-'<%= + @current_user.id if @current_user %>);
+
+  // Some useful debug msgs
+  pusher.connection.bind('connecting', function() {
+    $('div#status').text('Connecting to Pusher...');
+  });
+  pusher.connection.bind('connected', function() {
+    $('div#status').text('Connected to Pusher!');
+  });
+  pusher.connection.bind('failed', function() {
+    $('div#status').text('Connection to Pusher failed :(');
+  });
+  channel.bind('subscription_error', function(status) {
+    $('div#status').text('Pusher subscription_error');
+  });
+
+	channel.bind('new_message', function(data) {
+	  msg = '<br/>' + data.from + ' says: ' + data.subject;
+	  dom_notify(msg);
+	});
+	
+	function dom_notify(msg) {
+	  $('#notify').append(msg);
+	  $('#notify').fadeIn();
+	  //setTimeout(function() {
+	    //$('#notify').fadeOut
+	    //();
+	  //}, 5000);
+	}
+	
+	
+});

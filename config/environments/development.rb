@@ -1,7 +1,16 @@
 Esperimento2::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  FAYE_URL = 'http://dubitoserver.herokuapp.com/faye'
+  #pusher
+  require 'pusher'
+
+  Pusher.app_id = 22736
+  Pusher.key = 'e50277c2ad2071c2e622'
+  Pusher.secret = '83c272e0c122b526764f'
+  
+  
+
+  FAYE_URL = 'http://localhost:9292/faye'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

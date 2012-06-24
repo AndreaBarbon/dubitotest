@@ -10,6 +10,7 @@ gem 'pg'
 gem 'json'
 
 gem 'thin'
+gem 'pusher'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
