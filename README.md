@@ -3,7 +3,8 @@
 
 ## Set up
 
-First set your local pg credentials in config/database.yml, the in the terminal
+First set your local pg credentials in config/database.yml. 
+The in the terminal
 
     $ bundle
     $ bundle update
@@ -14,6 +15,12 @@ First set your local pg credentials in config/database.yml, the in the terminal
 
 ###	messages_controller.rb
 Here you find the action called when a user sends a message. It is delivered through pusher
+
+### pusher_controller.rb
+Deals with Pusher authorization
+
+### application.html.erb
+Application view layout. Here we also set the room_id variable
 
 ## Links
 
