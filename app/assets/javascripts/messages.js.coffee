@@ -9,12 +9,15 @@ presenceChannel = pusher.subscribe('presence-test')
 	
 presenceChannel.bind 'pusher:subscription_succeeded', (members) ->
 	console.log 'subscription_succeeded, members: ' + members.count
+	dom_notify 'Now we are' + members.count
 
 presenceChannel.bind "pusher:member_added", (member) ->
 	console.log 'Member added'
+	dom_notify 'Member added'
 	
 presenceChannel.bind 'pusher:member_removed', (member) ->
 	console.log 'Member removed'
+	dom_notify 'Member removed'
 	
 		
 pusher.connection.bind "connected", ->

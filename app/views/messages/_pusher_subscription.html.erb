@@ -24,11 +24,6 @@
       $('div#status').text('Pusher subscription_error');
     });
 
-		// Increment the number of people in the room when you successfully subscribe to the room
-		channel.bind('pusher:subscription_succeeded', function(members) {
-			dom_notify(member_list.count);
-		})
-
 		channel.bind('new_message', function(data) {
 		 console.log('Private message received');
 		 msg = '<br/>' + data.from + ': ' + data.subject;
