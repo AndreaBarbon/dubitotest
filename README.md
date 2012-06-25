@@ -1,9 +1,9 @@
 # Dubito Test
-#### A online game test, using Pusher and websockets
+## A online game test, using Pusher and websockets
 
 ## Set up
 
-    First set your local pg credentials in config/database.yml, the in the terminal
+First set your local pg credentials in config/database.yml, the in the terminal
 
     $ bundle
     $ bundle update
@@ -13,7 +13,7 @@
 ## Have a look to the following files:
 
 ###	messages_controller.rb
-		Here you find the action called when a user sends a message. It is delivered through pusher
+Here you find the action called when a user sends a message. It is delivered through pusher
 
 ## Links
 
