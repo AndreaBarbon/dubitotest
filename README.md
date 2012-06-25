@@ -3,8 +3,7 @@ Set your local pg credentials in confgig/database.yml
 # Dubito Test
 #### A online game test, using Pusher and websockets
 
-    $ Set your local pg credentials in confgig/database.yml
-
+    First Sìset your local pg credentials in confgig/database.yml, the in the terminal
 
     $ bundle
     $ bundle update
