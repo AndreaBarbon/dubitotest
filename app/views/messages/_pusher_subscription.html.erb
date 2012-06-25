@@ -19,22 +19,10 @@
     pusher.connection.bind('failed', function() {
       $('div#status').text('Connection to Pusher failed :(');
     });
-    channel.bind('subscription_error', function(status) {
+    channel_public.bind('subscription_error', function(status) {
       $('div#status').text('Pusher subscription_error');
     });
 
-		channel.bind('new_message', function(data) {
-		 console.log('Private message received');
-		 msg = '<br/>' + data.from + ': ' + data.subject;
-		  dom_notify(msg);
-		});	
-		
-		channel_public.bind('new_message', function(data) {
-			console.log('Public message received');
-		  msg = '<br/>' + data.from + '(public): ' + data.subject;
-		  dom_notify(msg);
-		});
-		
 		function dom_notify(msg) {
 		  $('#notify').append(msg);
 		  $('#notify').fadeIn();

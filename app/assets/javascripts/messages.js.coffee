@@ -6,18 +6,25 @@
 Pusher.channel_auth_endpoint = '/pusher/auth'
 pusher = new Pusher('e50277c2ad2071c2e622')
 presenceChannel = pusher.subscribe('presence-test')
-	
+channel_public = pusher.subscribe 'public'
+
+		
+channel_public.bind 'new_message', (data) ->
+	console.log 'Public message received'
+	msg = data.from + ': ' + data.subject
+	dom_notify msg	
+
 presenceChannel.bind 'pusher:subscription_succeeded', (members) ->
 	console.log 'subscription_succeeded, members: ' + members.count
-	dom_notify 'Now we are' + members.count
+	dom_notify 'Now we are ' + members.count + ' now'
 
 presenceChannel.bind "pusher:member_added", (member) ->
 	console.log 'Member added'
-	dom_notify  member.name+'joined us'
+	dom_notify  member.info.name+' joined us'
 	
 presenceChannel.bind 'pusher:member_removed', (member) ->
 	console.log 'Member removed'
-	dom_notify  member.name+'left us'
+	dom_notify  member.info.name+' left us'
 	
 		
 pusher.connection.bind "connected", ->
@@ -28,4 +35,5 @@ $ ->
     $("#new_message")[0].reset()
 
 dom_notify = (msg) ->
-  $("#notify").append msg
+	msg = '<li>'+msg+'</li>'
+	$("#notify").append msg
