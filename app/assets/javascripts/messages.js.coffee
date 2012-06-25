@@ -4,7 +4,7 @@
 
 
 Pusher.channel_auth_endpoint = '/pusher/auth'
-pusher = new Pusher('e50277c2ad2071c2e622')
+pusher = new Pusher('6d703ea627122d6087a6')
 presenceChannel = pusher.subscribe('presence-'+room_id)
 channel_room = pusher.subscribe 'room-'+room_id
 console.log 'Room: ' + 'room-' + room_id

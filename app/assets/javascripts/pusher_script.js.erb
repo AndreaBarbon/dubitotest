@@ -1,5 +1,5 @@
 $(function() {
-  var pusher = new Pusher('e50277c2ad2071c2e622'); // Replace with your app key
+  var pusher = new Pusher('6d703ea627122d6087a6'); // Replace with your app key
   var channel = pusher.subscribe('private-'<%= + @current_user.id if @current_user %>);
 
   // Some useful debug msgs
