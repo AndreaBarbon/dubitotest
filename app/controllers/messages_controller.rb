@@ -7,9 +7,9 @@ class MessagesController < ApplicationController
     @message = Message.create!(params[:message])
     @room_id = @message.room_id ? @message.room_id : 'public'
     
-    #Pusher['private-'+current_user.id.to_s].trigger('new_message', {:from => current_user.name, :subject => @message.content})
+    #This sends the message through Pusher
     Pusher['room-'+@room_id.to_s].trigger('new_message', {:from => current_user.name, :subject => @message.content})
-    puts '****************** Sending message: ' + @message.content + ' to  channel: ' + 'room-'+@room_id.to_s
+    puts '****************** Sending message: ' + @message.content + ' to  channel: ' + 'room-' + @room_id.to_s
 
   end
 
