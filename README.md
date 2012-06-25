@@ -13,6 +13,9 @@ The in the terminal
 
 ## Have a look to the following files:
 
+### messages.js.coffee
+Most of the Pusher stuffs are here
+
 ###	messages_controller.rb
 Here you find the action called when a user sends a message. It is delivered through pusher
 
@@ -21,6 +24,7 @@ Deals with Pusher authorization
 
 ### application.html.erb
 Application view layout. Here we also set the room_id variable
+
 
 ## Links
 
