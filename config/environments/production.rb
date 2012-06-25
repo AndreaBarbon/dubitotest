@@ -5,8 +5,8 @@ Esperimento2::Application.configure do
   require 'pusher'
 
   Pusher.app_id = 22736
-  Pusher.key = 'e50277c2ad2071c2e622'
-  Pusher.secret = '83c272e0c122b526764f'
+  Pusher.key = 'ecad5976420547b3ad4f'
+  Pusher.secret = 'e6020c573934f8fe7d31'
   
   
   
