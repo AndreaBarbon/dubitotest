@@ -1,4 +1,3 @@
-
 class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json

@@ -13,6 +13,7 @@ gem 'pusher'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'twitter-bootstrap-rails'
 

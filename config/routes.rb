@@ -6,6 +6,7 @@ Esperimento2::Application.routes.draw do
   resources :messages
 
   get "messages/index"
+  get "sessions/login"
   
   root :to => "rooms#index"
   
