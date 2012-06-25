@@ -15,7 +15,6 @@
 		  // states = {previous: 'oldState', current: 'newState'}
 			console.log('State changed to '+states.current);		
 		  $('div#status').text("Pusher's current state is " + states.current);
-		  dom_notify(states.current);
 		});
     pusher.connection.bind('failed', function() {
       $('div#status').text('Connection to Pusher failed :(');

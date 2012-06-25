@@ -13,11 +13,11 @@ presenceChannel.bind 'pusher:subscription_succeeded', (members) ->
 
 presenceChannel.bind "pusher:member_added", (member) ->
 	console.log 'Member added'
-	dom_notify 'Member added'
+	dom_notify  member.name+'joined us'
 	
 presenceChannel.bind 'pusher:member_removed', (member) ->
 	console.log 'Member removed'
-	dom_notify 'Member removed'
+	dom_notify  member.name+'left us'
 	
 		
 pusher.connection.bind "connected", ->
@@ -27,14 +27,5 @@ $ ->
   $("#new_message").live "ajax:complete", (event, xhr, status) ->
     $("#new_message")[0].reset()
 
-
-
-presenceChannel.bind "pusher:member_removed", (member) ->
-	console.log('Member removed')
-	msg = '<br/>Member removed'
-	dom_notify(msg)
-
 dom_notify = (msg) ->
   $("#notify").append msg
-
-dom_notify('Im alive &<br/>')
