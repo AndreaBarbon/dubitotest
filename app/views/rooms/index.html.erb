@@ -1,0 +1,27 @@
+
+
+<h1>Stanze disponibili <%= link_to 'Nuova Stanza', new_room_path, :class => 'btn btn-primary' %></h1>
+<br/>
+<div class="well fixed_height">	
+	<table class="table table">
+	  <tbody>
+			<% @rooms.each do |room| %>
+		      <tr>
+		        <td><%= link_to room.name, room_path(room) %></td>
+		        <td>
+		          <%= link_to t('.show', :default => t("helpers.links.show")),
+		                      room, :class => 'btn btn-mini btn-primary' %>
+		          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+		                      room_path(room),
+		                      :method => :delete,
+		                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+		                      :class => 'btn btn-mini btn-warning' %>
+		        </td>
+		      </tr>
+		    <% end %>
+
+	  </tbody>
+	</table>
+</div>
+
+<br />

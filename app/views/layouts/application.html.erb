@@ -8,7 +8,12 @@
     <title><%= @title %></title>
 
 	  <%= csrf_meta_tags %>
+
+		<script type="text/javascript">
+			room_id = "<%= @room ? @room.id : 'public' %>";
+		</script>
 		
+				
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="http://js.pusherapp.com/1.9/pusher.min.js"></script>
 		
@@ -34,12 +39,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"><%= @title %></a>
+          <a class="brand" href="/"><%= @title %></a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", ""  %></li>
-              <li><%= link_to "Link2", ""  %></li>
-              <li><%= link_to "Link3", ""  %></li>
+              <li><%= link_to "Stanze", "/rooms"  %></li>
+              <li><%= link_to "Messaggi", "/messages"  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -50,32 +54,31 @@
       <div class="row">
         <div class="span9">
 
-					<div id="status">Not connected with Pusher</div>	
-
-
-						<% if current_user %>
-						  Welcome <%= current_user.name %>!
-						  <%= link_to "Sign Out", signout_path %>
-						<% else %>
-					  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-						<br/>
-					  <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-						<% end %>
-
 					<%= yield %>
 
         </div>
 
+
 	      <div class="span3">
-	        <div class="well sidebar-nav">
-	          <ul class="nav nav-list">
-	            <li class="nav-header">Sidebar</li>
-	            <li><%= link_to "Link1", ""  %></li>
-	            <li><%= link_to "Link2", ""  %></li>
-	            <li><%= link_to "Link3", ""  %></li>
+	        <div class="well sidebar-nav">												
+	        	<ul class="nav nav-list">
+	            <li class="nav-header"><%= render 'pusher_status' %></li>
+							<li><%= render 'login_status' %></li>
 	          </ul>
 	        </div><!--/.well -->
 	      </div><!--/span-->
+	
+	
+	      <div class="span3">
+	        <div class="well sidebar-nav">												
+	        	<ul class="nav nav-list">
+	            <li class="nav-header">Navigation</li>
+	            <li><%= link_to "Stanze", "/rooms"  %></li>
+              <li><%= link_to "Messaggi", "/messages"  %></li>
+	          </ul>
+	        </div><!--/.well -->
+	      </div><!--/span-->
+	
 	
       </div><!--/row-->
 

@@ -1,11 +1,13 @@
 Esperimento2::Application.routes.draw do
+  resources :rooms
+
   get "iphone/listen"
 
   resources :messages
 
   get "messages/index"
   
-  root :to => "messages#index"
+  root :to => "rooms#index"
   
   match 'iphone/messages/new/:content' => 'iphone#new_message', :as => :new_message
   

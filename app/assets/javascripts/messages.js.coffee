@@ -5,18 +5,41 @@
 
 Pusher.channel_auth_endpoint = '/pusher/auth'
 pusher = new Pusher('e50277c2ad2071c2e622')
-presenceChannel = pusher.subscribe('presence-test')
-channel_public = pusher.subscribe 'public'
+presenceChannel = pusher.subscribe('presence-'+room_id)
+channel_room = pusher.subscribe 'room-'+room_id
+console.log 'Room: ' + 'room-' + room_id
 
 		
-channel_public.bind 'new_message', (data) ->
+channel_room.bind 'new_message', (data) ->
 	console.log 'Public message received'
 	msg = data.from + ': ' + data.subject
 	dom_notify msg	
 
+
+pusher.connection.bind 'connecting', ->
+	$('div#status').text 'Connecting to Pusher...'
+
+pusher.connection.bind 'connected', ->
+	$('div#status').text 'Connected to Pusher!'
+
+pusher.connection.bind 'state_change', (states) ->
+	console.log 'State changed to '+states.current
+	$('div#status').text "Pusher's current state is " + states.current
+
+pusher.connection.bind 'failed', ->
+	$('div#status').text 'Connection to Pusher failed :('
+
+channel_room.bind 'subscription_error', (status) ->
+	$('div#status').text 'Pusher subscription_error'
+
+
+# Members tracking
+
 presenceChannel.bind 'pusher:subscription_succeeded', (members) ->
 	console.log 'subscription_succeeded, members: ' + members.count
-	dom_notify 'Now we are ' + members.count + ' now'
+	dom_notify 'We are ' + members.count + ' now'
+	$('h3').text members.count+' people'
+	
 
 presenceChannel.bind "pusher:member_added", (member) ->
 	console.log 'Member added'
@@ -26,7 +49,8 @@ presenceChannel.bind 'pusher:member_removed', (member) ->
 	console.log 'Member removed'
 	dom_notify  member.info.name+' left us'
 	
-		
+
+
 pusher.connection.bind "connected", ->
   console.log 'Connected to Pusher!'
 	

@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <%= f.text_field :content, :class => 'input-xlarge' %>
+    <%= f.hidden_field :room_id, :value => @room.id %>
   </div>
   <div class="actions">
     <%= f.submit %>

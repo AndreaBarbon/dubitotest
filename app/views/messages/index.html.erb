@@ -7,17 +7,15 @@
 
 	<div class="well limited">
 		<ul id="notify" class="limited">
-			<% render @messages %>
+			<%= render @messages %>
 		</ul>
-	</div>
+	</div>	
 
 	<%= form_for Message.new, :remote=>true do |f| %>
 		<%= f.text_field :content %>
 		<%= f.submit "send", :class => 'btn btn-primary' %>
 	<% end %>
-	
-	<%= render 'pusher_subscription' %>
-	
+		
 <% else %>
 	<h1>Please log in</h1>
 <% end %>
